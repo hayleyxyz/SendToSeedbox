@@ -4,6 +4,8 @@
 // @version      0.1
 // @description  Adds a button to send a torrent directly to your seedbox
 // @match        https://animebytes.tv/torrents.php*
+// @match        https://animebytes.tv/torrents2.php*
+// @match        https://animebytes.tv/artist.php*
 // @grant        none
 // ==/UserScript==
 
@@ -11,7 +13,7 @@ var targetUrl = 'http://your-domain.com/sendtoseedbox.php'; // location of php s
 var key = 'CHANGE_ME'; // ACCESS_KEY paramater in php script
 
 // get all "DL" links
-var downloadLinks = document.querySelectorAll('.group_torrent a[href*="/torrents.php?action=download"]');
+var downloadLinks = document.querySelectorAll('.group_torrent a[href*=".php?action=download"], .torrent_group a[href*=".php?action=download"]');
 
 for(var i in downloadLinks) {
     var downloadLink = downloadLinks[i];
@@ -32,6 +34,7 @@ function addLink(downloadLink) {
     trigger.onclick = triggerClickHandler;
     trigger.disable = triggerDisable;
     trigger.loading = false; // to disable spam-clicking
+    trigger.title = 'Send to seedbox';
     
     parent.insertBefore(trigger, downloadLink);
     
