@@ -1,13 +1,14 @@
 // ==UserScript==
-// @name         SendToSeedbox - AnimeBytes
+// @name         SendToSeedbox - Gazelle
 // @namespace    https://github.com/kimoi
 // @version      0.1
 // @description  Adds a button to send a torrent directly to your seedbox
-// @match        https://animebytes.tv/torrents.php*
-// @match        https://animebytes.tv/torrents2.php*
-// @match        https://animebytes.tv/artist.php*
+// @match        https://animebytes.tv/*
+// @match        https://tls.passthepopcorn.me/*
+// @match        https://what.cd/*
+// @match        https://broadcasthe.net/*
+// @match        https://tracker.beathau5.com/*
 // @grant        none
-// ==/UserScript==
 
 var targetUrl = 'http://your-domain.com/sendtoseedbox.php'; // location of php script on your webserver
 var key = 'CHANGE_ME'; // ACCESS_KEY paramater in php script
