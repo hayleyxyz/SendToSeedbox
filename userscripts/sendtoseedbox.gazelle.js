@@ -9,6 +9,7 @@
 // @match        https://broadcasthe.net/*
 // @match        https://tracker.beathau5.com/*
 // @grant        none
+// ==/UserScript==
 
 var targetUrl = 'http://your-domain.com/sendtoseedbox.php'; // location of php script on your webserver
 var key = 'CHANGE_ME'; // ACCESS_KEY paramater in php script
