@@ -30,13 +30,19 @@ function addLink(downloadLink) {
     
     // create the SB link
     var trigger = document.createElement('a');
+    trigger.downloadLink = downloadLink;
     trigger.innerText = 'SB';
     trigger.style.cursor = 'pointer'; // for hover state
     trigger.torrentUrl = downloadLink.href;
-    trigger.onclick = triggerClickHandler;
+    trigger.onclick = triggerClickHandler; // onclick event
     trigger.disable = triggerDisable;
     trigger.loading = false; // to disable spam-clicking
     trigger.title = 'Send to seedbox';
+    trigger.originalOnclick = downloadLink.getAttribute('onclick');
+    
+    if(downloadLink.innerText !== 'DL') {
+        trigger.innerText = 'SB-' + downloadLink.innerText;
+    }
     
     parent.insertBefore(trigger, downloadLink);
     
@@ -48,6 +54,13 @@ function addLink(downloadLink) {
 function triggerClickHandler() {
     if(this.disabled || this.loading) {
         return false;
+    }
+    
+    if(this.originalOnclick) {
+        var result = runOriginalOnclick(this.originalOnclick, this.downloadLink);
+        if(result === false) {
+            return false;
+        }
     }
     
     this.loading = true;
@@ -83,4 +96,13 @@ function triggerDisable() {
     this.style.color = getComputedStyle(this.parentNode).color;
     this.style.cursor = 'initial';
     this.disabled = true;
+}
+
+function runOriginalOnclick(onclick, scope) {
+    try {
+        return eval('(function() { ' + onclick + '; })').apply(scope);
+    }
+    catch(e) {
+        return true;
+    }
 }
