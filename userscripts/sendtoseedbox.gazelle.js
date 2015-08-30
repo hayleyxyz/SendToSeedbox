@@ -8,6 +8,7 @@
 // @match        https://what.cd/*
 // @match        https://broadcasthe.net/*
 // @match        https://tracker.beathau5.com/*
+// @match        https://gazellegames.net
 // @grant        none
 // ==/UserScript==
 
