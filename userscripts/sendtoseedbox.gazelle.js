@@ -5,6 +5,7 @@
 // @description  Adds a button to send a torrent directly to your seedbox
 // @match        https://animebytes.tv/*
 // @match        https://tls.passthepopcorn.me/*
+// @match        http://passthepopcorn.me/*
 // @match        https://what.cd/*
 // @match        https://broadcasthe.net/*
 // @match        https://tracker.beathau5.com/*
